@@ -11,7 +11,7 @@ session_start();
 // $result = mysql_query("SELECT * FROM `USUARIO` WHERE `NOME` = '$login' AND `SENHA`= '$senha'");
 
 try {
-	$dbh = new PDO('mysql:host=localhost;dbname=app_rjmid', 'root', 'rafa1991');	
+	$dbh = new PDO('mysql:host=localhost;dbname=app', 'root', '');	
 } catch (PDOException $e) {
 	echo 'Error!: ' . $e->getMessage() . '<br/>';
     die();
@@ -21,8 +21,11 @@ try {
 // Camada de Persistência POSTs e GETs
 
 // Criar uma camada de validação para esses dados
-$login = (string) isset($_POST['login']) ? $_POST['login'] : 'daniel@corretorarjmid.com.br';
-$senha = (string) isset($_POST['senha']) ? $_POST['senha'] : '35635b1833b44c6aba47f56da3725874';
+$login = (string) isset($_POST['login']) ? $_POST['login'] : '';
+$senha = (string) isset($_POST['senha']) ? $_POST['senha'] : '';
+
+$login = 'email@teste.com.br';
+$senha = '35635b1833b44c6aba47f56da3725874';
 
 
 $dbh->beginTransaction(); //Importante inciar Transaction isso protege seu SGDB
